@@ -1,5 +1,14 @@
 # CourseSelector
-CourseSelector is a tool designed to assist UC Merced students in determining the most efficient set of courses to fulfill their general education requirements. By parsing the university's requirement list and analyzing available courses, the algorithm generates optimized schedules, ensuring that all requirements are met with the least number of classes.
+
+CourseSelector is a C++17 schedule optimizer that finds compact sets of UC Merced courses satisfying multiple general-education requirements. It uses breadth-first search and hash-based state tracking to explore possible schedules while discarding duplicate or suboptimal combinations.
+
+## Engineering highlights
+
+- Parses requirement and course data from plain-text inputs
+- Finds courses that satisfy multiple requirements simultaneously
+- Uses breadth-first search to identify schedules with the fewest courses
+- Tracks explored schedules with hash-based data structures to avoid duplicate work
+- Reports execution time and writes the best alternatives to `best_schedules.txt`
 
 ## Features
 - **Requirement Parsing**: Reads and processes UC Merced's General Education requirements from input files.
@@ -26,10 +35,18 @@ CourseSelector is a tool designed to assist UC Merced students in determining th
 - Input files structured with the UC Merced general education requirements and courses.
   - (Can be copied and pasted directly from the UC Merced Gen Ed. Requirement Listing website)
 #### Compilation
-- Use any standard C++ compiler (e.g., GCC, Clang, MSVC) to compile the project. Example with g++:
-`g++ -std=c++17 -o CourseSelector main.cpp FileIO.cpp GlobalVariables.cpp Logic.cpp Schedule.cpp`
+- Build with the included Makefile:
+
+```bash
+make
+```
+
 #### Running the program
-`./courseSelector`
+
+```bash
+./courseSelector
+```
+
 Place input files in the same directory or provide paths in the code.
 
 #### Example Output
@@ -45,10 +62,10 @@ COURSE102
 ## Performance
 The algorithm is designed to handle large input files efficiently by leveraging breadth-first search and hash-based tracking of unique schedules. Execution time is logged for performance monitoring.
 
-## Future Improvements:
+## Future Improvements
 - **GUI Integration**: Provide a user-friendly interface for course selection.
 - **Dynamic Input Parsing**: Support for real-time requirement updates.
 - **Advanced Optimization**: Incorporate additional constraints like time slots and prerequisites.
 
 ## License
-This project is licensed under the MIT License. See `LICENSE` for details.
+This project is licensed under the Apache License 2.0. See `LICENSE` for details.
